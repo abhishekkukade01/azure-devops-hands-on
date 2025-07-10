@@ -9,7 +9,7 @@ Deploy a Linux VM in that subnet.
 
 Verify IP addressing and connectivity (ping within subnet)
 
-🧠 Interview insight: You'll be able to explain IP ranges, subnetting, and internal communication.
+🧠  Goal: You'll be able to understand IP ranges, subnetting, and internal communication.
 
 solutions: 
 
