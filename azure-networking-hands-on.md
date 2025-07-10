@@ -50,6 +50,7 @@ solutions:
           Note: By default, all VMs in the same subnet can talk to each other privately using their private IPs.
           No NSG rules are needed unless we restrict them.
 
-          ![image](https://github.com/user-attachments/assets/a6788d80-e6f9-4de1-9cb5-92d265494a4d)
+![image](https://github.com/user-attachments/assets/597ff241-89f4-4200-8274-e5895d16037f)
+
 
 
