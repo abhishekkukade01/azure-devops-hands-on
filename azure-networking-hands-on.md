@@ -56,7 +56,60 @@ solutions:
 ![image](https://github.com/user-attachments/assets/2a995b98-2211-4cb4-bc81-6e7ece4bda93)
 
 _______________________________________________________________________________________________________________________
+✅ Task 2: Secure the VM with NSG Rules
+Goal: Learn traffic control using Network Security Groups.
+Attach an NSG to your VM NIC or Subnet.
+Allow only:
+SSH (22) from your IP
+HTTP (80) from any
+Deny all other inbound traffic
+Test using SSH and curl
 
+🧠 Goal : You'll understand NSG rule structure, direction, priority, and real use cases.
 
+          Step 1: Create an NSG
+          Go to Azure Portal → Search for "Network Security Groups" → Create
+          Fill in:
+          Name: DevOps-NSG
+          Region: Same as VM
+          Resource Group: DevOps-RG
+          Click Review + Create, then Create
 
+          Step 2: Attach NSG to VM NIC
+          Go to Virtual Machines → Click your DevOps-LinuxVM
+          Under Networking, click the Network Interface (NIC) name
+          In NIC blade, go to Network Security Group → Associate
+          Select:
+          Network Security Group: DevOps-NSG
+          Click Save
+
+          Step 3: Add Inbound Security Rules
+           we add 3 inbound rules:
+              1. Allow SSH (22) from your IP
+                 Go to DevOps-NSG → Inbound Security Rules → Add
+                 Fill in:
+                   Source: IP Addresses
+                   Source IP address: your public IP
+                   Destination port ranges: 22
+                   Protocol: TCP
+                   Action: Allow
+                   Priority: 100
+                   Name: Allow-SSH-MyIP
+                   Click Add
+          
+                  2. Allow HTTP (80) from anywhere
+                     Add new rule again:
+                     Source: Any
+                     Destination port ranges: 80
+                     Protocol: TCP
+                     Action: Allow
+                     Priority: 200
+                     Name: Allow-HTTP-All
+                     Click Add
+          
+                  3. Deny All Other Inbound Traffic
+                     Azure adds this by default at priority 65500. So, no need to add manually.
+
+![image](https://github.com/user-attachments/assets/fb13792e-a3fb-4e2b-84f2-f83c1196844a)
+![image](https://github.com/user-attachments/assets/a7d5f043-8883-4823-8fd2-fefd1757403a)
 
