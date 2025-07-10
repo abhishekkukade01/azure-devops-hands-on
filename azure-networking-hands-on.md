@@ -185,6 +185,17 @@ Solutions:
           Run:
           
           ping 10.2.1.4
-          ✅ If ping works, peering and routing are successful!
+          If ping works, peering and routing are successful!
+
+<img width="1730" height="1678" alt="image" src="https://github.com/user-attachments/assets/7a0a9c4f-ad4f-4934-92a4-5b6a874629e6" />
+<img width="2754" height="1229" alt="image" src="https://github.com/user-attachments/assets/afc336b3-2d67-4158-8521-963004b52ae3" />
+<img width="2729" height="1387" alt="image" src="https://github.com/user-attachments/assets/9d282b3d-b31a-4c66-b4a0-b52ee7d6d12d" />
+<img width="2873" height="874" alt="image" src="https://github.com/user-attachments/assets/38fbdbc1-b539-4e3d-a844-e9d9459c5c33" />
+
+________________________________________________________________________________________________________________________________________
+
+
+
+
      
 
