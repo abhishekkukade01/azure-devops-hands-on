@@ -9,7 +9,7 @@ Deploy a Linux VM in that subnet.
 
 Verify IP addressing and connectivity (ping within subnet)
 
-🧠  Goal: You'll be able to understand IP ranges, subnetting, and internal communication.
+🧠  insight: You'll be able to understand IP ranges, subnetting, and internal communication.
 
 solutions: 
 
@@ -57,15 +57,15 @@ solutions:
 
 _______________________________________________________________________________________________________________________
 ✅ Task 2: Secure the VM with NSG Rules
-Goal: Learn traffic control using Network Security Groups.
-Attach an NSG to your VM NIC or Subnet.
-Allow only:
-SSH (22) from your IP
-HTTP (80) from any
-Deny all other inbound traffic
-Test using SSH and curl
+          Goal: Learn traffic control using Network Security Groups.
+          Attach an NSG to your VM NIC or Subnet.
+          Allow only:
+          SSH (22) from your IP
+          HTTP (80) from any
+          Deny all other inbound traffic
+          Test using SSH and curl
 
-🧠 Goal : You'll understand NSG rule structure, direction, priority, and real use cases.
+🧠 insight : You'll understand NSG rule structure, direction, priority, and real use cases.
 
           Step 1: Create an NSG
           Go to Azure Portal → Search for "Network Security Groups" → Create
@@ -112,4 +112,79 @@ Test using SSH and curl
 
 ![image](https://github.com/user-attachments/assets/fb13792e-a3fb-4e2b-84f2-f83c1196844a)
 ![image](https://github.com/user-attachments/assets/a7d5f043-8883-4823-8fd2-fefd1757403a)
+____________________________________________________________________________________________________________________________________
+
+✅ Task 3: VNet Peering Between Two Networks
+Goal: Understand cross-VNet communication.
+Create 2 VNets in the same region:
+VNetA: 10.1.0.0/16, Subnet: 10.1.1.0/24
+VNetB: 10.2.0.0/16, Subnet: 10.2.1.0/24
+Deploy a VM in each VNet
+Configure VNet peering
+Ping between VMs
+
+🧠  insight: You’ll be able to understand peering, route propagation, and security between networks.
+Solutions: 
+
+          Step 1: Create VNetA
+          Go to Virtual Networks → Create
+          Fill in:
+          Name: VNetA
+          Address space: 10.1.0.0/16
+          Subnet: SubnetA → 10.1.1.0/24
+          Region: Same as before
+          Resource Group: Abhishek_devops 
+          Click Review + Create → Create
+
+          Step 2: Create VNetB
+          Repeat the process:
+          Name: VNetB
+          Address space: 10.2.0.0/16
+          Subnet: SubnetB → 10.2.1.0/24
+          Region: Same
+          Resource Group: Abhishek_devops 
+
+          Step 3: Create VMs in Each VNet
+          Create 2 VMs (Ubuntu 22.04 LTS):
+          VM in VNetA
+          Name: VM-A
+          VNet: VNetA, Subnet: SubnetA
+          NSG: Allow SSH and ICMP (Ping) if not already allowed
+          VM in VNetB
+          Name: VM-B 
+          VNet: VNetB, Subnet: SubnetB
+          Same SSH + Ping rules
+          Important: Azure blocks ICMP (ping) by default. To enable ping: 
+          In the NSG, add an Inbound Rule:
+          Source: Any
+          Protocol: ICMP
+          Action: Allow
+          Priority: 300
+          Name: Allow-Ping
+
+          Step 4: Configure VNet Peering
+          From VNetA → VNetB
+          Go to VNetA → Peerings → + Add
+          Fill in:
+          Name: VNetA-to-VNetB
+          Peering Link: From VNetA to VNetB
+          Subscription: Same
+          Virtual network: VNetB
+          Allow traffic: Check both checkboxes
+          Allow gateway: leave unchecked
+          Click Add
+          
+          From VNetB → VNetA
+          Go to VNetB → Peerings → + Add
+          Name: VNetB-to-VNetA
+          Fill same as above, selecting VNetA
+
+          Step 5: Test Cross-VNet Communication
+          SSH into VM-A
+          Get private IP of VM-B (10.2.1.4)
+          Run:
+          
+          ping 10.2.1.4
+          ✅ If ping works, peering and routing are successful!
+     
 
