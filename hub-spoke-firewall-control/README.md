@@ -145,4 +145,6 @@ AzureDiagnostics
 | where Fqdn_s contains "github.com" or Fqdn_s contains "facebook.com"
 ```
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/922c5e86-c5d9-4a11-9850-096ebf7ace4d" />
+
 
