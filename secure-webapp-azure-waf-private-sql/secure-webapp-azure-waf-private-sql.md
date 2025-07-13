@@ -40,6 +40,8 @@ Companies hosting sensitive web applications need to ensure both front-end (web)
 
   * `subnet-web` (for VM)
   * `subnet-appgw` (for Application Gateway)
+<img width="2940" height="902" alt="image" src="https://github.com/user-attachments/assets/224f9f33-9cb1-4983-bf61-8ffae9699a05" />
+
 
 ### Step 2: Create Azure SQL Database
 
@@ -48,6 +50,9 @@ Companies hosting sensitive web applications need to ensure both front-end (web)
 * **No public access**
 * Create Private Endpoint to `subnet-db` in VNet
 
+<img width="2940" height="1163" alt="image" src="https://github.com/user-attachments/assets/fcaa182a-3c70-426f-8a6c-cc1c4ca2e899" />
+
+
 ### Step 3: Deploy Application Gateway (WAF v2)
 
 * Attach to `subnet-appgw`
@@ -55,6 +60,8 @@ Companies hosting sensitive web applications need to ensure both front-end (web)
 * Add OWASP default rules
 * Backend pool: Target the Web App VM private IP
 * Health Probe and HTTP Rule
+<img width="2902" height="1186" alt="image" src="https://github.com/user-attachments/assets/ce6fa233-45e7-416b-ba3a-8f0c97c56922" />
+
 
 ### Step 4: Deploy VM and Install NGINX
 
@@ -81,7 +88,8 @@ Companies hosting sensitive web applications need to ensure both front-end (web)
 
 ### ✅ Screenshot: Blocked by WAF
 
-![WAF-Block](screenshots/waf-block-xss.png)
+<img width="2905" height="1445" alt="image" src="https://github.com/user-attachments/assets/dd18de1d-953e-4d7c-bc39-2d01dc3b99fb" />
+
 
 ### Step 6: Configure Private DNS Resolution for SQL
 
@@ -98,6 +106,8 @@ Companies hosting sensitive web applications need to ensure both front-end (web)
 
 * From browser: Public IP not reachable
 * SQL is only accessible inside VNet
+<img width="2109" height="495" alt="image" src="https://github.com/user-attachments/assets/317e92aa-bee4-413a-ac8d-127efabb74e5" />
+
 
 ---
 
